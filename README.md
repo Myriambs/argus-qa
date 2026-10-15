@@ -107,6 +107,9 @@ claude plugin install argus-qa@argus-qa
 claude mcp add playwright -- npx @playwright/mcp@latest
 ```
 
+## 📘 User guide
+[`GUIDE.md`](GUIDE.md) explains how to use the website step by step, each of the 5 web specialists with use cases and examples, every `/` command with examples, and real-world workflows (refinement, PRs, release day, flaky CI).
+
 ## Learn the craft
 [`QA-AGENT-KNOWLEDGE.md`](QA-AGENT-KNOWLEDGE.md) is the handbook behind every rule here: the 12 jobs of a QA
 agent, test design techniques, oracles and heuristics (FEW HICCUPPS, SFDIPOT), risk-based testing, bug
@@ -120,6 +123,7 @@ qa-agent/
 ├── skills/                11 /qa-* commands (qa = orchestrator)
 ├── examples/seeded-bug-benchmark/   reproducible proof
 ├── docs/                  Argus Web (GitHub Pages site, bring-your-own-key)
+├── GUIDE.md               user guide: website + every command, with examples
 ├── QA-AGENT-KNOWLEDGE.md  the handbook
 └── install.sh
 ```
