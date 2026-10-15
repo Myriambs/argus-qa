@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Argus Web · AI QA team</title>
+  <meta name="description" content="Argus Web: an evidence-driven AI QA team in your browser. Test plans, test cases, PR diff reviews, bug reports and release checks. Free with a Gemini key, or use Claude.">
+  <meta property="og:title" content="Argus Web · AI QA team">
+  <meta property="og:description" content="Paste a story, a diff or a GitHub PR link. Get a professional QA report in seconds. Bring your own Gemini (free) or Claude key.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👁️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#workspace">Skip to the workspace</a>
+
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="./" aria-label="Argus Web home">
+        <span class="brand-eye" aria-hidden="true">👁️</span>
+        <span class="brand-name">Argus</span><span class="brand-tag">Web</span>
+      </a>
+      <nav class="topnav" aria-label="Links">
+        <a href="https://github.com/Myriambs/argus-qa#readme" target="_blank" rel="noopener">Claude Code version</a>
+        <a href="https://github.com/Myriambs/argus-qa/blob/main/QA-AGENT-KNOWLEDGE.md" target="_blank" rel="noopener">Handbook</a>
+        <a class="gh" href="https://github.com/Myriambs/argus-qa" target="_blank" rel="noopener" aria-label="GitHub repository">
+          <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        </a>
+        <button class="btn btn-ghost key-chip" id="keyChip" type="button" aria-controls="settings" aria-expanded="false">
+          <span class="dot" id="keyDot" aria-hidden="true"></span><span id="keyChipText">Add API key</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <p class="eyebrow">Evidence-driven QA · open source</p>
+      <h1>Your AI QA team,<br><span class="grad">right in the browser.</span></h1>
+      <p class="lede">Paste a user story, a diff, or a <strong>GitHub PR link</strong>. Argus's specialists return the report a senior QA engineer would write: risks, test cases, likely bugs, and what still needs checking.</p>
+      <ul class="pills" aria-label="Highlights">
+        <li>🆓 Free with a Gemini key</li>
+        <li>🔐 Your key never leaves your browser</li>
+        <li>🧠 Every finding labeled by evidence</li>
+      </ul>
+    </section>
+
+    <!-- SETTINGS -->
+    <section class="wrap" id="settings" aria-labelledby="settingsTitle">
+      <div class="card settings">
+        <div class="settings-head">
+          <h2 id="settingsTitle">1 · Connect an AI model</h2>
+          <p class="muted">Argus Web uses <em>your</em> API key. It's stored only in this browser and sent only to the provider you pick. There is no Argus server.</p>
+        </div>
+
+        <div class="provider-switch" role="radiogroup" aria-label="AI provider">
+          <label class="provider">
+            <input type="radio" name="provider" value="gemini" checked>
+            <span class="provider-card">
+              <span class="provider-name">Google Gemini <span class="badge badge-free">Free tier</span></span>
+              <span class="provider-sub">Get a key at <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a></span>
+            </span>
+          </label>
+          <label class="provider">
+            <input type="radio" name="provider" value="claude">
+            <span class="provider-card">
+              <span class="provider-name">Anthropic Claude <span class="badge">Pay as you go</span></span>
+              <span class="provider-sub">Get a key at <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com</a></span>
+            </span>
+          </label>
+        </div>
+
+        <div class="key-row">
+          <div class="field grow">
+            <label for="apiKey" id="apiKeyLabel">Gemini API key</label>
+            <div class="input-with-btn">
+              <input id="apiKey" type="password" autocomplete="off" spellcheck="false" placeholder="Paste your key">
+              <button class="btn btn-ghost" id="toggleKey" type="button" aria-pressed="false" aria-label="Show key">Show</button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="model">Model</label>
+            <select id="model" disabled><option>Connect first</option></select>
+          </div>
+          <button class="btn btn-primary" id="connectBtn" type="button">Connect</button>
+        </div>
+        <div class="key-foot">
+          <label class="check"><input type="checkbox" id="rememberKey"> Remember key on this device</label>
+          <button class="linkish" id="forgetKey" type="button">Forget key</button>
+          <p class="status" id="connectStatus" role="status" aria-live="polite"></p>
+        </div>
+        <p class="notice" id="providerNotice"></p>
+      </div>
+    </section>
+
+    <!-- WORKSPACE -->
+    <section class="wrap" id="workspace" aria-labelledby="workspaceTitle">
+      <h2 id="workspaceTitle" class="section-title">2 · Pick a specialist</h2>
+      <div class="tabs" role="tablist" aria-label="Argus specialists" id="tabs"></div>
+
+      <div class="grid">
+        <form class="card panel" id="inputPanel" role="tabpanel" aria-labelledby="" novalidate>
+          <div class="panel-head">
+            <div>
+              <h3 id="modeTitle"></h3>
+              <p class="muted" id="modeDesc"></p>
+            </div>
+            <button class="btn btn-ghost btn-sm" type="button" id="loadExample">Load example</button>
+          </div>
+
+          <div class="pr-box" id="prBox" hidden>
+            <label for="prUrl">GitHub PR or commit link <span class="muted">(public repos)</span></label>
+            <div class="input-with-btn">
+              <input id="prUrl" type="url" inputmode="url" placeholder="https://github.com/owner/repo/pull/123" spellcheck="false">
+              <button class="btn btn-ghost" id="fetchPr" type="button">Fetch diff</button>
+            </div>
+            <p class="status" id="prStatus" role="status" aria-live="polite"></p>
+            <div class="or"><span>or paste it below</span></div>
+          </div>
+
+          <div id="fields"></div>
+
+          <div class="options" id="options"></div>
+
+          <div class="run-row">
+            <button class="btn btn-primary btn-lg" id="runBtn" type="submit">
+              <span aria-hidden="true">▶</span> <span id="runLabel">Run</span>
+            </button>
+            <button class="btn btn-ghost" id="stopBtn" type="button" hidden>Stop</button>
+            <span class="muted small" id="charCount"></span>
+          </div>
+        </form>
+
+        <section class="card panel output" aria-labelledby="outTitle">
+          <div class="panel-head">
+            <h3 id="outTitle">Report</h3>
+            <div class="out-actions" id="outActions" hidden>
+              <button class="btn btn-ghost btn-sm" type="button" id="copyOut">Copy</button>
+              <button class="btn btn-ghost btn-sm" type="button" id="dlMd">.md</button>
+              <button class="btn btn-ghost btn-sm" type="button" id="dlCsv" hidden>.csv</button>
+              <button class="btn btn-ghost btn-sm" type="button" id="dlFeature" hidden>.feature</button>
+            </div>
+          </div>
+          <p class="status" id="runStatus" role="status" aria-live="polite"></p>
+          <div class="report" id="report" tabindex="0" aria-label="Report output">
+            <div class="empty">
+              <div class="empty-eye" aria-hidden="true">👁️</div>
+              <p><strong>Your report appears here.</strong></p>
+              <p class="muted">Try <em>Diff Review → Load example</em>: it's a real change with 6 hidden bugs and a green test suite.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <aside class="legend card" aria-label="Evidence labels">
+        <div><span class="lbl">✅ VERIFIED</span> proven by executed evidence</div>
+        <div><span class="lbl">👁 OBSERVED</span> seen or reported, not reproduced</div>
+        <div><span class="lbl">🧠 INFERRED</span> reasoned from the material</div>
+        <div><span class="lbl">⛔ NOT TESTED</span> out of scope or blocked</div>
+        <p class="muted small">The web version can't run your code, so most findings here are <strong>🧠 INFERRED</strong>. For ✅ VERIFIED results (tests run, bugs reproduced, a real browser driven), use <a href="https://github.com/Myriambs/argus-qa#install" target="_blank" rel="noopener">Argus in Claude Code</a>.</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <p>Argus is open source (MIT) · <a href="https://github.com/Myriambs/argus-qa" target="_blank" rel="noopener">github.com/Myriambs/argus-qa</a></p>
+    <p class="muted small">AI output can be wrong. Review findings before acting on them. Don't paste secrets, and on free tiers don't paste confidential code (see the provider note above).</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+  <script src="examples.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

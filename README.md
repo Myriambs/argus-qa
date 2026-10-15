@@ -7,6 +7,11 @@ tester that drives a real browser, an SDET who proves its tests can fail, a diff
 accessibility, security and performance specialists, a flaky-test doctor, a bug reporter, and a
 release gatekeeper. One orchestrator (`/qa`) coordinates them.
 
+### 🌐 Try it in your browser, no install: **[myriambs.github.io/argus-qa](https://myriambs.github.io/argus-qa/)**
+Argus Web: paste a story, a diff or a **GitHub PR link** and get a test plan, test cases, a diff risk review,
+a bug report or a release check. It works with a **free Gemini key** or a Claude key. Your key stays in your browser.
+(The web version can't run your code, so its findings are 🧠 INFERRED. Install the Claude Code version below for ✅ VERIFIED results.)
+
 ### 🧪 Benchmark: 6 bugs planted, test suite still green → Argus found all 6
 
 In [`examples/seeded-bug-benchmark`](examples/seeded-bug-benchmark/), a "coupon" feature branch quietly
@@ -114,6 +119,7 @@ qa-agent/
 ├── agents/                12 specialist subagents
 ├── skills/                11 /qa-* commands (qa = orchestrator)
 ├── examples/seeded-bug-benchmark/   reproducible proof
+├── docs/                  Argus Web (GitHub Pages site, bring-your-own-key)
 ├── QA-AGENT-KNOWLEDGE.md  the handbook
 └── install.sh
 ```
