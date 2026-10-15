@@ -1,0 +1,8 @@
+{
+  "name": "argus-qa",
+  "version": "1.0.0",
+  "description": "Argus — an evidence-driven AI QA team for Claude Code: 12 specialist agents (architect, test designer, explorer, automation, change analyst, API, a11y, security, performance, flaky doctor, bug reporter, release gatekeeper) and 11 /qa commands.",
+  "author": { "name": "Meriem Ben Salah" },
+  "keywords": ["qa", "testing", "test-automation", "playwright", "accessibility", "release", "quality"],
+  "license": "MIT"
+}

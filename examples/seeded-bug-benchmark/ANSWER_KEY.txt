@@ -1,0 +1,6 @@
+1 off-by-one: qty < MAX_QTY rejects 10
+2 qty validation lost lower bound: 0 and negatives accepted
+3 BOLA: getOrder owner check removed
+4 stale discount: setQty/add after applyCoupon keeps old discount amount
+5 fractional cents: percent discount not rounded (e.g. 999*15/100)
+6 weakened tests: skip on qty 10, qty-0 assertion removed, authz test inverted to own-user
